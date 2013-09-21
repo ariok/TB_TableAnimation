@@ -20,6 +20,7 @@
 		A583290216CF9966006B410B /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A583290016CF9966006B410B /* TableViewController.m */; };
 		A583290316CF9966006B410B /* TableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A583290116CF9966006B410B /* TableViewController.xib */; };
 		A583290516CF9BC1006B410B /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A583290416CF9BC1006B410B /* QuartzCore.framework */; };
+		DAD8B9E017EDB728001D79B7 /* colors@2x.gif in Resources */ = {isa = PBXBuildFile; fileRef = DAD8B9DF17EDB728001D79B7 /* colors@2x.gif */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		A583290016CF9966006B410B /* TableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TableViewController.m; sourceTree = "<group>"; };
 		A583290116CF9966006B410B /* TableViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TableViewController.xib; sourceTree = "<group>"; };
 		A583290416CF9BC1006B410B /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		DAD8B9DF17EDB728001D79B7 /* colors@2x.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = "colors@2x.gif"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 		A58328E216CF9916006B410B /* TableAnimation */ = {
 			isa = PBXGroup;
 			children = (
+				DAD8B9DF17EDB728001D79B7 /* colors@2x.gif */,
 				A58328EB16CF9917006B410B /* AppDelegate.h */,
 				A58328EC16CF9917006B410B /* AppDelegate.m */,
 				A58328FF16CF9966006B410B /* TableViewController.h */,
@@ -169,6 +172,7 @@
 				A58328E716CF9916006B410B /* InfoPlist.strings in Resources */,
 				A58328EF16CF9917006B410B /* Default.png in Resources */,
 				A58328F116CF9917006B410B /* Default@2x.png in Resources */,
+				DAD8B9E017EDB728001D79B7 /* colors@2x.gif in Resources */,
 				A58328F316CF9917006B410B /* Default-568h@2x.png in Resources */,
 				A583290316CF9966006B410B /* TableViewController.xib in Resources */,
 				A5657F7417DB3EA800C9B9CF /* 114×114.png in Resources */,

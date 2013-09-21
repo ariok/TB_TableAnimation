@@ -32,7 +32,7 @@
     
     if(self){
         for (int i=1; i<100; i++) {
-            NSString *str = [NSString stringWithFormat:@"Row %d",i];
+            NSString *str = [NSString stringWithFormat:@"This is the fabulous Row %d",i];
             [objects addObject:str];
         }
     }
@@ -42,12 +42,6 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
- 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 - (void)didReceiveMemoryWarning
@@ -70,14 +64,23 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    //1. Get the cell
     static NSString *CellIdentifier = @"Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:CellIdentifier];
+        
+        //2. Apply some text styles
+        cell.textLabel.textColor = [self colorFromIndex:indexPath.row];
+        cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:11];
+        cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica" size:8];
     }
+    
+    //3. Setup the cell
     cell.textLabel.text = [objects objectAtIndex:indexPath.row];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"details for row number %d",indexPath.row];
+    cell.imageView.image = [UIImage imageNamed:@"colors.gif"];
     
     return cell;
 }
@@ -92,13 +95,8 @@
     rotation = CATransform3DMakeRotation( (90.0*M_PI)/180, 0.0, 0.7, 0.4);
     rotation.m34 = 1.0/ -600;
     
-    //2. Apply some randomness to the background color
-    cell.layer.backgroundColor = [[UIColor colorWithRed:[self randomFloatBetween:0 and:1]
-                                                  green:[self randomFloatBetween:0 and:0.5]
-                                                   blue:[self randomFloatBetween:0 and:0.5]
-                                                  alpha:1]CGColor];
-    
-    //3. Define the initial state (Before the animation)
+
+    //2. Define the initial state (Before the animation)
     cell.layer.shadowColor = [[UIColor blackColor]CGColor];
     cell.layer.shadowOffset = CGSizeMake(10, 10);
     cell.alpha = 0;
@@ -107,12 +105,10 @@
     cell.layer.anchorPoint = CGPointMake(0, 0.5);
     
     
-    
-    //4. Define the final state (After the animation)
+    //4. Define the final state (After the animation) and commit the animation
     [UIView beginAnimations:@"rotation" context:NULL];
     [UIView setAnimationDuration:0.8];
     cell.layer.transform = CATransform3DIdentity;
-    cell.layer.backgroundColor = [[UIColor whiteColor]CGColor];
     cell.alpha = 1;
     cell.layer.shadowOffset = CGSizeMake(0, 0);
     [UIView commitAnimations];
@@ -125,5 +121,26 @@
     return (((float) (arc4random() % ((unsigned)RAND_MAX + 1)) / RAND_MAX) * diff) + smallNumber;
 }
 
+- (UIColor*)colorFromIndex:(int)index{
+    UIColor *color;
+    
+    //Purple
+    if(index % 3 == 0){
+        color = [UIColor colorWithRed:0.93 green:0.01 blue:0.55 alpha:1.0];
+    //Blue
+    }else if(index % 3 == 1){
+        color = [UIColor colorWithRed:0.00 green:0.68 blue:0.94 alpha:1.0];
+    //Blk
+    }else if(index % 3 == 2){
+        color = [UIColor blackColor];
+    }
+    else if(index % 3 == 3){
+        color = [UIColor colorWithRed:0.00 green:1.0 blue:0.00 alpha:1.0];
+    }
+
+    
+    return color;
+
+}
 
 @end
