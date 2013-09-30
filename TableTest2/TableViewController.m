@@ -75,12 +75,13 @@
         cell.textLabel.textColor = [self colorFromIndex:indexPath.row];
         cell.textLabel.font = [UIFont fontWithName:@"Helvetica" size:11];
         cell.detailTextLabel.font = [UIFont fontWithName:@"Helvetica" size:8];
+        cell.imageView.image = [UIImage imageNamed:@"colors.gif"];
+
     }
     
     //3. Setup the cell
     cell.textLabel.text = [objects objectAtIndex:indexPath.row];
     cell.detailTextLabel.text = [NSString stringWithFormat:@"details for row number %d",indexPath.row];
-    cell.imageView.image = [UIImage imageNamed:@"colors.gif"];
     
     return cell;
 }
@@ -104,6 +105,10 @@
     cell.layer.transform = rotation;
     cell.layer.anchorPoint = CGPointMake(0, 0.5);
     
+    //!!!FIX for issue #1 Cell position wrong------------
+    if(cell.layer.position.x == 160){
+        cell.layer.position = CGPointMake(0, cell.layer.position.y);
+    }
     
     //4. Define the final state (After the animation) and commit the animation
     [UIView beginAnimations:@"rotation" context:NULL];
