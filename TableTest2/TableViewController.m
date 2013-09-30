@@ -106,7 +106,7 @@
     cell.layer.anchorPoint = CGPointMake(0, 0.5);
     
     //!!!FIX for issue #1 Cell position wrong------------
-    if(cell.layer.position.x == 160){
+    if(cell.layer.position.x != 0){
         cell.layer.position = CGPointMake(0, cell.layer.position.y);
     }
     
